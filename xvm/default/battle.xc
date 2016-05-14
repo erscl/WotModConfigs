@@ -18,7 +18,7 @@
     "allowSpottedStatus": true,
     // true - enable {{hp*}} macros ability in players panels and minimap. WARNING: performance expensive
     // true - включить возможность {{hp*}} макросов в ушах и на миникарте. ВНИМАНИЕ: может понизить производительность
-    "allowHpInPanelsAndMinimap": false,
+    "allowHpInPanelsAndMinimap": true,
     // true - enable {{marksOnGun}} macro in players panels and minimap. WARNING: performance expensive
     // true - включить макрос {{marksOnGun}} в ушах и на миникарте. ВНИМАНИЕ: может понизить производительность
     "allowMarksOnGunInPanelsAndMinimap": false,
