@@ -45,12 +45,9 @@
     "filters": {
       // false - hide filter.
       // false - скрыть фильтр.
-      "nation":   { "enabled": true },  // nation             / страна
-      "type":     { "enabled": true },  // vehicle class      / тип техники
-      "favorite": { "enabled": true },  // favorite tanks     / основные танки
-      "gameMode": { "enabled": true },  // fallout mode tanks / танки для "боя до последнего"
-      "level":    { "enabled": true },  // vehicle level      / уровень техники
-      "prefs":    { "enabled": true }   // other filters      / другие фильтры
+      "params":   { "enabled": true },  // main params        / основные параметры
+      "bonus":    { "enabled": true },  // x2 bonus           / x2 бонус
+      "favorite": { "enabled": true }   // favorite tanks     / основные танки
     },
     // Spacing between filters cells.
     // Отступ между ячейками фильтров.

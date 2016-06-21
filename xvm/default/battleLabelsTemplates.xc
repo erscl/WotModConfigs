@@ -147,8 +147,21 @@
       "currentFieldDefaultStyle": { "color": "0xF4EFE8", "size": 15 },
       "format": "{{xvm-stat?{{l10n:Chance to win}}: {{chancesStatic}}{{chancesStatic?&nbsp;/&nbsp;|}}{{chancesLive}}}}"
     },
-    "test": {
+    "totalHP": {
       "enabled": false,
+      "updateEvent": "ON_PLAYERS_HP_CHANGED",
+      "x": 0,
+      "y": 30,
+      "width": 200,
+      "height": 40,
+      "autoSize": "center",
+      "align": "center",
+      "shadow": { "distance": 1, "angle": 90, "alpha": 80, "blur": 5, "strength": 1.5 },
+      "currentFieldDefaultStyle": { "color": "0xF4EFE8", "size": 18 },
+      "format": "{{py:xvm.total_hp.text()}}"
+    },
+    "test": {
+      "enabled": true,
       "y": -170,
       "width": 200,
       "height": 50,
@@ -161,7 +174,7 @@
       "format": "This is a demo of XVM text fields on battle interface. You may disable it in battle.xc<br/> Press '<font color='#60FF00'>J</font>' hot-key to show info field"
     },
     "test2": {
-      "enabled": false,
+      "enabled": true,
       "hotKeyCode": 36,
       "y": -70,
       "width": 310,

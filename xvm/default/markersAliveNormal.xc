@@ -77,30 +77,6 @@
       },
       "format": "{{vehicle}}{{turret}}"
     },
-    "tankLevel": {
-      "name": "Tank leve;",
-      "visible": true,
-      "x": 0,
-      "y": -61,
-      "alpha": 100,
-      "color": null,
-      "font": {
-        "name": "$FieldFont",
-        "size": 15,
-        "align": "center",
-        "bold": false,
-        "italic": false
-      },
-      "shadow": {
-        "alpha": 100,
-        "color": "0x000000",
-        "angle": 45,
-        "distance": 0,
-        "size": 6,
-        "strength": 200
-      },
-      "format": "{{rlevel}}"
-    },
     // Text field with the name of the player.
     // Текстовое поле с именем игрока.
     "playerName": {
@@ -129,15 +105,15 @@
       },
       "format": "<font size='{{battletype?13|{{squad?13|0}}}}'>{{name}}</font>"  // формат текста. См. описание макросов в macros.txt
     },
-    // Text field with the remaining / maximum health.
-    // Текстовое поле с оставшимся / максимальным здоровьем.
+    // Text field with the remaining health.
+    // Текстовое поле с оставшимся здоровьем.
     "tankHp": {
       "name": "Tank HP",
       "visible": true,
       "x": 0,
       "y": -20,
       "alpha": 100,
-      "color": "0xFCFCFC",
+      "color": "0xD9D9D9",
       "font": {
         "name": "$FieldFont",
         "size": 11,
@@ -153,17 +129,43 @@
         "size": 4,
         "strength": 100
       },
-      "format": "{{hp}} / {{hp-max}}"
+      "format": "{{hp}}"
     },
-    // Text field with the XMQP event.
-    // Текстовое поле с событием XMQP.
+    // Text field with rating.
+    // Текстовое поле с рейтингом.
+    "rating": {
+      "name": "Rating",
+      "visible": true,
+      "x": -35,
+      "y": -20,
+      "alpha": "{{xvm-stat?100|0}}",
+      "color": "{{c:r|#999999}}",
+      "font": {
+        "name": "xvm",
+        "size": 16,
+        "align": "right",
+        "bold": false,
+        "italic": false
+      },
+      "shadow": {
+        "alpha": 100,
+        "color": "0x000000",
+        "angle": 45,
+        "distance": 0,
+        "size": 1,
+        "strength": 100
+      },
+      "format": "&#x115;"
+    },
+    // Text field with the XMQP event marker.
+    // Текстовое поле с маркером события XMQP.
     "xmqpEvent": {
       "name": "xmqp event",           //  название текстового поля, ни на что не влияет
       "visible": true,                //  false - не отображать
       "x": 0,                         //  положение по оси X
-      "y": -55,                       //  положение по оси Y
-      "alpha": "{{x-overturned?100|{{x-spotted?100|50}}}}",  //  прозрачность (допускается использование динамической прозрачности, см. macros.txt)
-      "color": "{{x-overturned?0xFFBB00|{{x-spotted?0xFFBB00|0xFFFFFF}}}}",  //  цвет (допускается использование динамического цвета, см. macros.txt)
+      "y": "{{battletype?-71|{{squad?-71|-56}}}}",  //  положение по оси Y
+      "alpha": 100,                   //  прозрачность (допускается использование динамической прозрачности, см. macros.txt)
+      "color": "0xFFBB00",            //  цвет (допускается использование динамического цвета, см. macros.txt)
       "font": {                       //  параметры шрифта
         "name": "xvm",                //  название
         "size": 23,                   //  размер
@@ -179,31 +181,7 @@
         "size": 4,                    //  размер
         "strength": 100               //  интенсивность
       },
-      "format": "{{x-overturned?&#x112;|{{x-spotted?&#x70;|{{x-enabled?{{x-sense-on?&#x70;}}}}}}}}"  //  формат текста. См. описание макросов в macros.txt
-    },
-    "winRate": {
-      "name": "Win Rate",
-      "visible": true,
-      "x": 0,
-      "y": -46,
-      "alpha": 100,
-      "color": "{{c:winrate}}",
-      "font": {
-        "name": "$FieldFont",
-        "size": 11,
-        "align": "center",
-        "bold": true,
-        "italic": false
-      },
-      "shadow": {
-        "alpha": 100,
-        "color": "0x000000",
-        "angle": 45,
-        "distance": 0,
-        "size": 6,
-        "strength": 200
-      },
-      "format": "{{winrate%2d~%}}"
+      "format": "<font color='{{x-spotted?#FFBB00|#FFFFFF}}' alpha='{{x-spotted?#FF|#80}}'>{{x-spotted?&#x70;|{{x-sense-on?&#x70;}}}}</font> {{x-overturned?&#x112;}}"  //  формат текста. См. описание макросов в macros.txt
     }
   },
   // Настройки для союзников.
@@ -248,22 +226,22 @@
     // Индикатор здоровья.
     "healthBar": {
       "visible": true,                  //   false - не отображать
-      "x": -41,                         //   положение по оси X
+      "x": -36,                         //   положение по оси X
       "y": -33,                         //   положение по оси Y
       "alpha": 100,                     //   прозрачность (допускается использование динамической прозрачности, см. macros.txt)
       "color": null,                    //   цвет основной (допускается использование динамического цвета, см. macros.txt)
       "lcolor": null,                   //   цвет дополнительный (для градиента)
-      "width": 80,                      //   ширина полосы здоровья
+      "width": 70,                      //   ширина полосы здоровья
       "height": 12,                     //   высота полосы здоровья
       // Параметры подложки и рамки.
       "border": {
-        "alpha": 30,                    //     прозрачность
+        "alpha": 35,                    //     прозрачность
         "color": "0x000000",            //     цвет
         "size": 1                       //     размер рамки
       },
       // Параметры оставшегося здоровья.
       "fill": {
-        "alpha": 30                     //     прозрачность
+        "alpha": 45                     //     прозрачность
       },
       // Параметры анимации отнимаемого здоровья.
       "damage": {
@@ -317,9 +295,9 @@
     // Vehicle tier.
     // Уровень танка.
     "levelIcon": {
-      "visible": true,  // false - disable        / не отображать.
+      "visible": false,  // false - disable        / не отображать.
       "x": 0,            // Position on the X axis / Положение по оси X.
-      "y": -76,          // Position on the Y axis / Положение по оси Y.
+      "y": -21,          // Position on the Y axis / Положение по оси Y.
       "alpha": 100       // Opacity                / Прозрачность.
     },
     // Markers "Help!" and "Attack!".
@@ -334,10 +312,9 @@
     // Блок текстовых полей.
     "textFields": [
       ${ "def.tankName" },
-      // ${ "def.tankLevel" },
       ${ "def.playerName" },
-      ${ "def.winRate" },
       ${ "def.tankHp" },
+      ${ "def.rating" },
       ${ "def.xmqpEvent" }
     ]
   },
@@ -367,20 +344,20 @@
     // Индикатор здоровья.
     "healthBar": {
       "visible": true,
-      "x": -41,
+      "x": -36,
       "y": -33,
       "alpha": 100,
       "color": null,
       "lcolor": null,
-      "width": 80,
+      "width": 70,
       "height": 12,
       "border": {
-        "alpha": 30,
+        "alpha": 35,
         "color": "0x000000",
         "size": 1
       },
       "fill": {
-        "alpha": 30
+        "alpha": 50
       },
       "damage": {
         "alpha": 100,
@@ -422,9 +399,9 @@
     // Vehicle tier.
     // Уровень танка.
     "levelIcon": {
-      "visible": true,
+      "visible": false,
       "x": 0,
-      "y": -76,
+      "y": -21,
       "alpha": 100
     },
     // Markers "Help!" and "Attack!".
@@ -439,9 +416,8 @@
     // Блок текстовых полей.
     "textFields": [
       ${ "def.tankName" },
-      // ${ "def.tankLevel" },
-      ${ "def.winRate" },
-      ${ "def.tankHp" }
+      ${ "def.tankHp" },
+      ${ "def.rating" }
     ]
   }
 }

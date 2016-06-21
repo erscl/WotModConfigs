@@ -22,12 +22,9 @@
     "showTotalSlots": true,
     "sorting_criteria": ["level", "nation", "type"],
     "filters": {
-      //"nation":   { "enabled": false },
-      //"type":     { "enabled": false },
+      //"params":   { "enabled": false },
+      //"bonus":    { "enabled": false },
       //"favorite": { "enabled": false },
-      //"gameMode": { "enabled": false },
-      //"level":    { "enabled": false },
-      //"prefs":    { "enabled": false },
       "__stub__": {}
     },
     "fields": {

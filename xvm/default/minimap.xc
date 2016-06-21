@@ -27,7 +27,7 @@
     "cameraAlpha": 100,
     // Vehicles icon size. Does not affect attached geometry and textfields. Floating point allowed: 0.7, 1.4.
     // Размер иконки техники. Не влияет на прикрепленную к геометрию и текстовые поля. Можно дробные: 0.7, 1.4.
-    "iconScale": 1.5,
+    "iconScale": 1,
     // Path to icon for arty aim
     // Путь к иконке для артиллерийского прицела
     "minimapAimIcon": "xvm://res/MinimapAim.png",
