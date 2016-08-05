@@ -3,8 +3,8 @@
  * Параметры панелей игроков ("ушей").
  */
 {
-  // Enemy spotted status marker definition.
-  // Шаблон маркера статуса засвета противника.
+  // Enemy spotted status marker format for substitutions in extra fields.
+  // Подстановка для дополнительного поля с маркером статуса засвета
   "enemySpottedMarker": {
     // Opacity percentage of spotted markers in the panels. 0 - transparent (disabled) ... 100 - opaque.
     // Прозрачность в процентах маркеров засвета в ушах. 0 - полностью прозрачные (отключены), 100 - не прозрачные.
@@ -28,13 +28,9 @@
     // настройки тени (см. ниже).
     "shadow": {}
   },
-  // XMQP service marker definition.
-  // Шаблон маркера сервиса XMQP.
-  "xmqpServiceMarker": {
-    "x": 6, "y": 1, "align": "center", "bindToIcon": true, 
-    "format": "<font face='xvm' size='23' color='{{alive?{{x-spotted?#FFBB00|{{x-sense-on?#D9D9D9|#BFBFBF}}}}|#FFFFFF}}' alpha='{{alive?#FF|#80}}'>{{alive?{{x-spotted?&#x70;|{{x-sense-on?&#x70;|{{x-enabled?&#x7A;}}}}}}|&#x76;}}</font>",
-    "shadow": {}
-  },
+  // XMQP service activation indicator definition.
+  // Шаблон индикатора активации сервиса XMQP.
+  "xmqpService": { "x": 1, "y": 1, "w": 5, "h": 22, "bgColor": "{{alive?{{x-enabled?0xFFBB00|0x595959}}|0x595959}}", "borderColor": "0x000000", "alpha": "{{x-enabled?{{alive?100|50}}|0}}" },
   // Parameters of the Players Panels ("ears").
   // Параметры панелей игроков ("ушей").
   "playersPanel": {
@@ -130,7 +126,7 @@
           //     "distance" (in pixels)
           //     "angle"    (0.0 .. 360.0)
           //     "color"    "0xXXXXXX"
-          //     "alpha"    (0.0 .. 100.0)
+          //     "alpha"    (0.0 .. 1.0)
           //     "blur"     (0.0 .. 255.0)
           //     "strength" (0.0 .. 255.0)
           //    }
@@ -176,16 +172,28 @@
       // Set of formats for left panel (extended format supported, see above)
       // Набор форматов для левой панели (поддерживается расширенный формат, см. выше)
       "extraFieldsLeft": [
-        // XMQP service marker (see above).
-        // Маркер сервиса XMQP (см. выше).
-        ${"xmqpServiceMarker"}
+        // XMQP service activation indicator (see above).
+        // Индикатор активации сервиса XMQP (см. выше).
+        ${"xmqpService"},
+        { "enabled": "true",
+          "x": -150, "y": 21, "bindToIcon": true, "h": 4, "w": 68,
+          "bgColor": "0", "alpha": "{{alive?50|0}}" },
+        { "enabled": "true",
+          "x": -149, "y": 22, "bindToIcon": true, "h": 2, "w": "{{hp-ratio:66}}",
+          "bgColor": "{{c:system}}", "alpha": "{{alive?80|0}}" }
       ],
       // Set of formats for right panel (extended format supported, see above)
       // Набор форматов для правой панели (поддерживается расширенный формат, см. выше)
       "extraFieldsRight": [
         // enemy spotted status marker (see above).
-        // маркер статуса засвета противника (см. выше).
-        ${"enemySpottedMarker"}
+        // маркер статуса засвета (см. выше).
+        ${"enemySpottedMarker"},
+        { "enabled": "true",
+          "x": -150, "y": 21, "bindToIcon": true, "h": 4, "w": 68,
+          "bgColor": "0", "alpha": "{{alive?50|0}}" },
+        { "enabled": "true",
+          "x": -149, "y": 22, "bindToIcon": true, "h": 2, "w": "{{hp-ratio:66}}",
+          "bgColor": "{{c:system}}", "alpha": "{{alive?80|0}}" }
       ]
     },
     // Options for the "medium" panels - the first of the medium panels.
@@ -217,16 +225,28 @@
       // Set of formats for left panel (extended format supported, see above)
       // Набор форматов для левой панели (поддерживается расширенный формат, см. выше)
       "extraFieldsLeft": [
-        // XMQP service marker (see above).
-        // Маркер сервиса XMQP (см. выше).
-        ${"xmqpServiceMarker"}
+        // XMQP service activation indicator (see above).
+        // Индикатор активации сервиса XMQP (см. выше).
+        ${"xmqpService"},
+        { "enabled": "true",
+          "x": -150, "y": 21, "bindToIcon": true, "h": 4, "w": 68,
+          "bgColor": "0", "alpha": "{{alive?50|0}}" },
+        { "enabled": "true",
+          "x": -149, "y": 22, "bindToIcon": true, "h": 2, "w": "{{hp-ratio:66}}",
+          "bgColor": "{{c:system}}", "alpha": "{{alive?80|0}}" }
       ],
       // Set of formats for right panel (extended format supported, see above)
       // Набор форматов для правой панели (поддерживается расширенный формат, см. выше)
       "extraFieldsRight": [
         // enemy spotted status marker (see above).
-        // маркер статуса засвета противника (см. выше).
-        ${"enemySpottedMarker"}
+        // маркер статуса засвета (см. выше).
+        ${"enemySpottedMarker"},
+        { "enabled": "true",
+          "x": -150, "y": 21, "bindToIcon": true, "h": 4, "w": 68,
+          "bgColor": "0", "alpha": "{{alive?50|0}}" },
+        { "enabled": "true",
+          "x": -149, "y": 22, "bindToIcon": true, "h": 2, "w": "{{hp-ratio:66}}",
+          "bgColor": "{{c:system}}", "alpha": "{{alive?80|0}}" }
       ]
     },
     // Options for the "medium2" panels - the second of the medium panels.
@@ -258,16 +278,28 @@
       // Set of formats for left panel (extended format supported, see above)
       // Набор форматов для левой панели (поддерживается расширенный формат, см. выше)
       "extraFieldsLeft": [
-        // XMQP service marker (see above).
-        // Маркер сервиса XMQP (см. выше).
-        ${"xmqpServiceMarker"}
+        // XMQP service activation indicator (see above).
+        // Индикатор активации сервиса XMQP (см. выше).
+        ${"xmqpService"},
+        { "enabled": "true",
+          "x": -150, "y": 21, "bindToIcon": true, "h": 4, "w": 68,
+          "bgColor": "0", "alpha": "{{alive?50|0}}" },
+        { "enabled": "true",
+          "x": -149, "y": 22, "bindToIcon": true, "h": 2, "w": "{{hp-ratio:66}}",
+          "bgColor": "{{c:system}}", "alpha": "{{alive?80|0}}" }
       ],
       // Set of formats for right panel (extended format supported, see above)
       // Набор форматов для правой панели (поддерживается расширенный формат, см. выше)
       "extraFieldsRight": [
         // enemy spotted status marker (see above).
-        // маркер статуса засвета противника (см. выше).
-        ${"enemySpottedMarker"}
+        // маркер статуса засвета (см. выше).
+        ${"enemySpottedMarker"},
+        { "enabled": "true",
+          "x": -150, "y": 21, "bindToIcon": true, "h": 4, "w": 68,
+          "bgColor": "0", "alpha": "{{alive?50|0}}" },
+        { "enabled": "true",
+          "x": -149, "y": 22, "bindToIcon": true, "h": 2, "w": "{{hp-ratio:66}}",
+          "bgColor": "{{c:system}}", "alpha": "{{alive?80|0}}" }
       ]
     },
     // Options for the "large" panels - the widest panels.
@@ -286,8 +318,8 @@
       "vehicleLevelAlpha": 100,
       // Display format for player nickname (macros allowed, see macros.txt).
       // Формат отображения имени игрока (допускаются макроподстановки, см. macros.txt).
-      "nickFormatLeft": "<font face='mono' size='{{xvm-stat?13|0}}' color='{{c:r}}' alpha='{{alive?#FF|#80}}'>{{r}}</font> {{name%.15s~..}} <font alpha='#A0'>{{clan}}</font>",
-      "nickFormatRight": "<font alpha='#A0'>{{clan}}</font> {{name%.15s~..}} <font face='mono' size='{{xvm-stat?13|0}}' color='{{c:r}}' alpha='{{alive?#FF|#80}}'>{{r}}</font>",
+      "nickFormatLeft": "<font face='mono' size='{{xvm-stat?13|0}}' color='{{c:r}}' alpha='{{alive?#FF|#80}}'>{{r}}</font> <img src='xvm://res/icons/xvm/xvm-user-{{xvm-user}}.png'> <font color='{{c:winrate}}'>{{name%.15s~..}}</font> <font alpha='#A0'>{{clan}}</font>",
+      "nickFormatRight": "<font alpha='#A0'>{{clan}}</font> <font color='{{c:winrate}}'>{{name%.15s~..}}</font> <img src='xvm://res/icons/xvm/xvm-user-{{xvm-user}}.png'> <font face='mono' size='{{xvm-stat?13|0}}' color='{{c:r}}' alpha='{{alive?#FF|#80}}'>{{r}}</font>",
       // Display format for vehicle name (macros allowed, see macros.txt).
       // Формат отображения названия танка (допускаются макроподстановки, см. macros.txt).
       "vehicleFormatLeft": "{{vehicle}}",
@@ -301,16 +333,28 @@
       // Set of formats for left panel (extended format supported, see above)
       // Набор форматов для левой панели (поддерживается расширенный формат, см. выше)
       "extraFieldsLeft": [
-        // XMQP service marker (see above).
-        // Маркер сервиса XMQP (см. выше).
-        ${"xmqpServiceMarker"}
+        // XMQP service activation indicator (see above).
+        // Индикатор активации сервиса XMQP (см. выше).
+        ${"xmqpService"},
+        { "enabled": "true",
+          "x": -150, "y": 21, "bindToIcon": true, "h": 4, "w": 68,
+          "bgColor": "0", "alpha": "{{alive?50|0}}" },
+        { "enabled": "true",
+          "x": -149, "y": 22, "bindToIcon": true, "h": 2, "w": "{{hp-ratio:66}}",
+          "bgColor": "{{c:system}}", "alpha": "{{alive?80|0}}" }
       ],
       // Set of formats for right panel (extended format supported, see above)
       // Набор форматов для правой панели (поддерживается расширенный формат, см. выше)
       "extraFieldsRight": [
         // enemy spotted status marker (see above).
-        // маркер статуса засвета противника (см. выше).
-        ${"enemySpottedMarker"}
+        // маркер статуса засвета (см. выше).
+        ${"enemySpottedMarker"},
+        { "enabled": "true",
+          "x": -150, "y": 21, "bindToIcon": true, "h": 4, "w": 68,
+          "bgColor": "0", "alpha": "{{alive?50|0}}" },
+        { "enabled": "true",
+          "x": -149, "y": 22, "bindToIcon": true, "h": 2, "w": "{{hp-ratio:66}}",
+          "bgColor": "{{c:system}}", "alpha": "{{alive?80|0}}" }
       ]
     }
   }
